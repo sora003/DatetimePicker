@@ -57,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
                 setTitle(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
             }
         });
+        timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                setTitle(hourOfDay+":"+minute);
+            }
+        });
     }
 
     @Override
