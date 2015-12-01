@@ -1,5 +1,6 @@
 package com.sora.datetimepicker;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -60,9 +61,16 @@ public class MainActivity extends AppCompatActivity {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                setTitle(hourOfDay+":"+minute);
+                setTitle(hourOfDay + ":" + minute);
             }
         });
+
+        new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                setTitle(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+            }
+        }, year, cal.get(Calendar.MONTH), day).show();
     }
 
     @Override
